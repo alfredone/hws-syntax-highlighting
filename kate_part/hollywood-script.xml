@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language>
+<language name="Hollywood Script" version="1" kateversion="5.79" section="Sources" extensions="*.hws" mimetype="text/x-hollywood-script">
+    <highlighting>
+        <list name="controlflow">
+        <item>If</item>
+        <item>Then</item>
+        <item>Else</item>
+        <item>ElseIf</item>
+        <item>EndIf</item>
+        <item>Switch</item>
+        <item>Case</item>
+        <item>Default</item>
+        <item>FallThrough</item>
+        <item>Break</item>
+        <item>EndSwitch</item>
+        <item>Continue</item>
+        <item>While</item>
+        <item>Wend</item>
+        <item>For</item>
+        <item>To</item>
+        <item>In</item>
+        <item>Do</item>
+        <item>Step</item>
+        <item>Next</item>
+        <item>Repeat</item>
+        <item>Until</item>
+        <item>Forever</item>
+        <item>Return</item>
+        <item>Block</item>
+        <item>EndBlock</item>
+        </list>
+        
+        <list name="keywords">
+        <item>True</item>
+        <item>False</item>
+        <item>Function</item>
+        <item>EndFunction</item>
+        <item>Switch</item>
+        <item>Case</item>
+        <item>Default</item>
+        <item>EndSwitch</item>
+        <item>While</item>
+        <item>Wend</item>
+        <item>For</item>
+        <item>To</item>
+        <item>In</item>
+        <item>Do</item>
+        <item>Step</item>
+        <item>Next</item>
+        <item>Repeat</item>
+        <item>Until</item>
+        </list>
+        
+        <list name="attributes">
+        <item>Local</item>
+        </list>
+    
+        <list name="types">
+        <item>Integer</item>
+        <item>Long</item>
+        <item>Byte</item>
+        <item>Boolean</item>
+        <item>Variant</item>
+        <item>Single</item>
+        <item>Double</item>
+        <item>Currency</item>
+        <item>String</item>
+        <item>Object</item>
+        <item>Control</item>
+        </list>
+    
+        <list name="preprocessor">
+          <item>@APPTITLE</item>
+          <item>@APPAUTHOR</item>
+          <item>@APPCOPYRIGHT</item>
+          <item>@APPDESCRIPTION</item>
+        </list>
+        
+        <contexts>
+        <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+        <keyword attribute="Keyword" context="#stay" String="keywords"/>
+        <keyword attribute="Identifier" context="#stay" String="types"/>
+        <Float attribute="String" context="#stay"/>
+        <Int attribute="Types" context="#stay"/>
+        <DetectChar attribute="String" context="String" char="&quot;"/>
+        <DetectChar attribute="Comment" context="Comment" char="'"/>
+        </context>
+        <context name="Comment" attribute="Comment" lineEndContext="#pop">
+        <DetectSpaces />
+        <IncludeRules context="##Comments"/>
+        </context>
+        <context name="String" attribute="String" lineEndContext="#pop">
+        <DetectChar attribute="String" context="#pop" char="'"/>
+        </context>
+        </contexts>
+        <itemDatas>
+        <itemData name="Normal Text" defStyleNum="dsNormal"/>
+        <itemData name="Keyword" defStyleNum="dsKeyword"/>
+        <itemData name="Identifier" defStyleNum="dsOthers"/>
+        <itemData name="Types" defStyleNum="dsDataType"/>
+        <itemData name="String" defStyleNum="dsString"/>
+        <itemData name="Comment" defStyleNum="dsComment"/>
+        </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start=";" />
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+</language>
