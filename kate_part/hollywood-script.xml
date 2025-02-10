@@ -3,15 +3,36 @@
 <language name="Hollywood Script" version="10.0" kateversion="5.79" section="Sources" extensions="*.hws" mimetype="text/x-hollywood-script">
    <highlighting>
       <!-- Hollywood Identifiers -->
+      <list name="HWOperator">
+      <item>^</item>
+	 <item>-</item>
+	 <item>~</item>
+	 <item>^</item>
+	 <item>Not</item>
+	 <item>/</item>
+	 <item>\</item>
+	 <item>%</item>
+	 <item>+</item>
+	 <item>&lt;&lt;</item>
+	 <item>&gt;&gt;</item>
+	 <item>&amp;</item>
+	 <item>|</item>
+	 <item>..</item>
+	 <item>=</item>
+	 <item>&lt;&gt;</item>
+	 <item>&lt;</item>
+	 <item>&gt;</item>
+	 <item>&gt;=</item>
+	 <item>&lt;=</item>
+	 <item>And</item>
+	 <item>Or</item>
+      </list>
       <list name="HWIdent">
-         <item>And</item>
          <item>Dim</item>
          <item>DimStr</item>
          <item>False</item>
          <item>Label</item>
-         <item>Nil</item>
-         <item>Not</item>
-         <item>Or</item>
+	 <item>Nil</item>
          <item>True</item>
          <item>Xor</item>
       </list>
@@ -1187,21 +1208,23 @@
       </list>
       <contexts>
          <context attribute="Normal Text" lineEndContext="#stay" name="HWNormal">
+	    <DetectChar attribute="HW Comment" context="comment_ctx" char=";" />
+	    <keyword attribute="HW Preprocessor Cmd" context="#stay"       String="HWPreproc"                 insensitive="true"/>
+	    <RegExpr attribute="HW Constant"         context="#stay"       String="#[A-Za-z_][A-Za-z0-9_!$]+" insensitive="true"/>
+	    <keyword attribute="HW Operator"         context="#stay"       String="HWOperator"                insensitive="true"/>
 	    <keyword attribute="HW Built In"         context="#stay"       String="HWBuiltIn"                 insensitive="true"/>
 	    <keyword attribute="HW Control Flow"     context="#stay"       String="HWCtrlFlow"                insensitive="true"/>
-	    <RegExpr attribute="HW Constant"         context="#stay"       String="#[A-Za-z_][A-Za-z0-9_!$]+" insensitive="true"/>
 	    <keyword attribute="HW Identifier"       context="#stay"       String="HWIdent"                   insensitive="true"/>
 	    <keyword attribute="HW Attribute"        context="varname_ctx" String="HWAttribute"               insensitive="true"/>
-	    <keyword attribute="HW Preprocessor Cmd" context="#stay"       String="HWPreproc"                 insensitive="true"/>
             <Int attribute="HW DecVal" context="#stay" />
 	    <Float attribute="HW Float"  context="#stay" />
             <HlCOct attribute="HW BaseN" context="#stay" />
             <HlCHex attribute="HW BaseN" context="#stay" />
             <HlCChar attribute="HW Char" context="#stay" />
             <DetectChar attribute="HW String" context="string_ctx" char="&quot;" />
-            <DetectChar attribute="HW Comment" context="comment_ctx" char=";" />
 	    <!--<DetectChar attribute="HW Table" context="table_ctx" char="{" />-->
          </context>
+	 <context attribute="HW Comment" lineEndContext="#pop" name="comment_ctx" />
          <context attribute="HW String" lineEndContext="#stay" name="string_ctx">
             <DetectChar attribute="HW String" context="#pop" char="&quot;" />
          </context>
@@ -1211,13 +1234,13 @@
          <context attribute="HW VarName" lineEndContext="#stay" name="varname_ctx">
             <RegExpr attribute="HW Variable" context="#pop" String="[A-Za-z_][A-Za-z0-9_!$]+" insensitive="true" />
 	    </context>-->
-         <context attribute="HW Comment" lineEndContext="#pop" name="comment_ctx" />
       </contexts>
       <itemDatas>
       <itemData name="Normal Text"         defStyleNum="dsNormal"        spellChecking="false" />
       <itemData name="HW Constant"         defStyleNum="dsConstant"      spellChecking="false" />
 	 <itemData name="HW Identifier"       defStyleNum="dsKeyword"       spellChecking="false" />
 	 <itemData name="HW Control Flow"     defStyleNum="dsControlFlow"   spellChecking="false" />
+	 <itemData name="HW Operator"         defStyleNum="dsOperator"      spellChecking="false" />
 	 <itemData name="HW Built In"         defStyleNum="dsBuiltIn"       spellChecking="false" />
 	 <itemData name="HW Attribute"        defStyleNum="dsAttribute"     spellChecking="false" />
 	 <itemData name="HW Preprocessor Cmd" defStyleNum="dsPreprocessor"  spellChecking="false" />
